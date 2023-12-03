@@ -12,11 +12,15 @@ main = do
   handle <- openFile "input.txt" ReadMode
   contents <- hGetContents handle
   let fileLines = lines contents
-  let results = map getNumberForGame fileLines
-  print (sum results)
+  -- let results = map getNumberForGame fileLines
+  -- print (sum results)
+  print (getSumOfValidGames fileLines)
   hClose handle
 
 -- only 12 red cubes, 13 green cubes, and 14 blue cubes?
+
+getSumOfValidGames:: [String] -> Integer
+getSumOfValidGames lines = sum (map getNumberForGame lines)
 
 getNumberForGame:: String -> Integer
 getNumberForGame s = 
